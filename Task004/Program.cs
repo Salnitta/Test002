@@ -4,12 +4,10 @@
 
 Console.WriteLine("Введите целое положительное число");
 int N = int.Parse(Console.ReadLine());
-int num = N * 2 + 1;
-int count = 1;
-while(num > count)
+int i = -N;
+while(i < N)
 {
-Console.Write(-N + ", ");
-count++;
-N--;
+Console.Write(i + ", ");
+i++;
 }
-Console.Write(-N);
+Console.Write(N);
