@@ -7,16 +7,16 @@ int xa = 40, ya = 1,
     xc = 80, yc = 30;
 
 Console.SetCursorPosition(xa, ya);
-Console.WriteLine("+");
+Console.Write("+");
 
 Console.SetCursorPosition(xb, yb);
-Console.WriteLine("+");
+Console.Write("+");
 
 Console.SetCursorPosition(xc, yc);
-Console.WriteLine("+");
+Console.Write("+");
 
 
-int x = xa, y = xb;
+int x = xa, y = ya;
 
 int count = 0;
 
@@ -42,6 +42,6 @@ while (count < 10000)
     }
 
     Console.SetCursorPosition(x, y);
-    Console.WriteLine("+");
+    Console.Write("+");
     count++;
 }
