@@ -4,13 +4,8 @@
 
 Console.WriteLine("Введите трехзначное положительное число");
 int N = int.Parse(Console.ReadLine());
-int result = N % 100 % 10;
-if(N > 999)
+if((N > 99) & (N < 1000))
 {
-    Console.WriteLine("Введено некорректное число");
+    Console.WriteLine(N % 10);
 } 
-else if (N < 100)
-{
-    Console.WriteLine("Введено некорректное число");  
-}
-else Console.WriteLine(result);
+else Console.WriteLine("Введено некорректное число");
