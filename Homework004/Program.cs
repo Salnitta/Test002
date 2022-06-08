@@ -4,8 +4,8 @@
 Console.WriteLine("Введите целое положительное число:");
 int N = int.Parse(Console.ReadLine());
 int i = 2;
-while(N >= i);
-{
-Console.Write(i + " ");
-i += 2;
-}
+while(N >= i)
+    {
+    Console.Write(i + " ");
+    i += 2;
+    }
