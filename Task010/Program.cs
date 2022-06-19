@@ -4,7 +4,7 @@
 // 4 -> 24
 // 5 -> 120
 
-int Func (int num)
+int Factorial (int num)
 {
     int product = 1;
     for (int i = 1; i <= num; i++)
@@ -14,14 +14,13 @@ int Func (int num)
     return product;
 }
 
-Console.WriteLine("Введите целое число > 0:");
-int N = int.Parse(Console.ReadLine());
-while (N <= 0)
+int N = 0;
+while (N < 1)
         {
             Console.WriteLine("Введите целое число >0:");
             N = int.Parse(Console.ReadLine());
         }
-Console.WriteLine(Func(N));
+Console.WriteLine(Factorial(N));
 
 
 // int product = 1;
