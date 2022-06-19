@@ -27,6 +27,11 @@ while (A % 1 != 0 & A != 0)
 }
 Console.WriteLine(Func((int)A));
 
+// Решение с помощью string:
+
+// int N = 123456;
+// Console.WriteLine(N.ToString().Length);
+
 // int count = 0;
 // if (A == 0)
 // {
