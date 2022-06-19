@@ -64,4 +64,3 @@ else Console.WriteLine("Нет, не палиндром");
 //     }
 // }
 // else Console.WriteLine("Введено некорректное число");
-
