@@ -4,8 +4,7 @@
 
 void FillArray(int[] collection)
 {
-    int length = collection.Length;
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < collection.Length; i++)
     {
         collection[i] = new Random().Next(0, 2);
     }
@@ -13,14 +12,13 @@ void FillArray(int[] collection)
 
 void PrintArray(int[] col)
 {
-    int count = col.Length;
-    for (int pos = 0; pos < count; pos++)
+    for (int pos = 0; pos < col.Length; pos++)
     {
         Console.Write(col[pos] + " ");
     } 
 }
 
-int[] array = new int[8];
+int[] array = new int[15];
 
 FillArray(array);
 PrintArray(array);
