@@ -7,25 +7,25 @@
 
 int Func (int num)
 {
-    if (num == 0)
-    {
-        return 1;
-    }
-    else 
+    if (num != 0)
     {
         int count = 0;
-        for ( ; num > 0; num = num / 10)
+        for ( ; num != 0; num = num / 10)
         {
             count ++;
         } 
         return count;
     }
+    else return 1;
 }
 
-Console.WriteLine("Введите число:");
-int A = int.Parse(Console.ReadLine());
-int n = Func(A);
-Console.WriteLine(n);
+double A = 0.28;
+while (A % 1 != 0 & A != 0)
+{
+    Console.WriteLine("Введите целое число:");
+    A = double.Parse(Console.ReadLine());
+}
+Console.WriteLine(Func((int)A));
 
 // int count = 0;
 // if (A == 0)
