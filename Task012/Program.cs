@@ -89,46 +89,46 @@
 // которая определяет, присутствует ли заданное число в массиве.
 // 4; массив [6, 7, 19, 345, 3] -> нет -3; массив [6, 7, 19, 345, 3] -> да
 
-void Fill(int[] arr)
-{
-    for (int i = 0; i < arr.Length; i++)
-    {
-        arr[i] = new Random().Next(-9, 10);
-    }
-}
+// void Fill(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         arr[i] = new Random().Next(-9, 10);
+//     }
+// }
 
-void Print(int[] array)
-{
-    for (int i = 0; i < array.Length; i++)
-    {
-        Console.Write(array[i] + " ");
-    }
-    Console.WriteLine();
-}
+// void Print(int[] array)
+// {
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         Console.Write(array[i] + " ");
+//     }
+//     Console.WriteLine();
+// }
 
-bool IndexOf(int[] col, int find)
-{
-    bool Exist = false;
-    for (int i = 0; i < col.Length; i++)
-    {
-        if (Math.Abs(col[i]) == Math.Abs(find))
-        {
-            Exist = true;
-            break;
-        }
-    }
-    return Exist;
-}
+// bool IndexOf(int[] col, int find)
+// {
+//     bool Exist = false;
+//     for (int i = 0; i < col.Length; i++)
+//     {
+//         if (Math.Abs(col[i]) == Math.Abs(find))
+//         {
+//             Exist = true;
+//             break;
+//         }
+//     }
+//     return Exist;
+// }
 
-int[] mass = new int[8];
-Fill(mass);
-Print(mass);
-Console.WriteLine("Please, enter integer:");
-int num = int.Parse(Console.ReadLine());
-bool result = IndexOf(mass, num);
+// int[] mass = new int[8];
+// Fill(mass);
+// Print(mass);
+// Console.WriteLine("Please, enter integer:");
+// int num = int.Parse(Console.ReadLine());
+// bool result = IndexOf(mass, num);
 
-if (result == false) Console.WriteLine("no");
-else Console.WriteLine("yes");
+// if (result == false) Console.WriteLine("no");
+// else Console.WriteLine("yes");
 
 
 // Задача 35: Задайте одномерный массив 
@@ -141,6 +141,44 @@ else Console.WriteLine("yes");
 // [1, 2, 3, 6, 2] -> 0
 // [10, 11, 12, 13, 14] -> 5
 
+// void Fill(int [] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         arr[i] = new Random().Next (-99, 100);
+//     }
+// }
+
+// void Print(int[] array)
+// {
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         Console.Write(array[i] + " ");
+//     }
+//     Console.WriteLine();
+// }
+
+// int Count(int[] col, int A, int B)
+// {
+//     int count = 0;
+//     for (int i = 0; i < col.Length; i++)
+//     {
+//         if (col[i] >= A && col[i] <= B)
+//         {
+//             count++;
+//         }
+//     }
+//     return count;
+// }
+
+// int[] mass = new int[123];
+// Fill(mass);
+// Print(mass);
+// int first = 10;
+// int last = 99;
+// int num = Count(mass, first, last);
+// Console.WriteLine($"Количество элементов в диапазоне от {first} до {last} - {num}");
+
 
 // Задача 37: Найдите произведение пар чисел 
 // в одномерном массиве. Парой считаем первый 
@@ -148,3 +186,44 @@ else Console.WriteLine("yes");
 // и т.д. Результат запишите в новом массиве. 
 // [1 2 3 4 5] -> 5 8 3
 // [6 7 3 6] -> 36 21
+
+void Fill(int[] arr)
+{
+    for (int i = 0; i < arr.Length; i++)
+    {
+        arr[i] = new Random().Next(0, 10);
+    }
+}
+
+void Print(int[] array)
+{
+    Console.WriteLine("Given array:");
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+    Console.WriteLine();
+}
+
+void PrintProd(int[] collection)
+{
+    int num = collection.Length;
+    int firstPos = 0;
+    int lastPos = num - 1;
+    Console.WriteLine("Resulting array:");
+    for (int i = 0; i < num / 2; i++)
+    {
+        int product = collection[firstPos] * collection[lastPos];
+        Console.Write(product + " ");
+        firstPos ++;
+        lastPos --;
+    }
+    if (num % 2 == 1) Console.Write (collection[num / 2] + " ");
+}
+
+int[] mass = new int[11];
+Fill(mass);
+Print(mass);
+PrintProd(mass);
+
+
