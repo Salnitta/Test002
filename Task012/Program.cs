@@ -89,24 +89,24 @@
 // которая определяет, присутствует ли заданное число в массиве.
 // 4; массив [6, 7, 19, 345, 3] -> нет -3; массив [6, 7, 19, 345, 3] -> да
 
-// void Fill(int[] arr)
-// {
-//     for (int i = 0; i < arr.Length; i++)
-//     {
-//         arr[i] = new Random().Next(-9, 10);
-//     }
-// }
+/* void Fill(int[] arr)
+{
+    for (int i = 0; i < arr.Length; i++)
+    {
+        arr[i] = new Random().Next(-9, 10);
+    }
+}
 
-// void Print(int[] array)
-// {
-//     for (int i = 0; i < array.Length; i++)
-//     {
-//         Console.Write(array[i] + " ");
-//     }
-//     Console.WriteLine();
-// }
+void Print(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+    Console.WriteLine();
+}
 
-// bool IndexOf(int[] col, int find)
+// bool Exist(int[] col, int find)
 // {
 //     bool Exist = false;
 //     for (int i = 0; i < col.Length; i++)
@@ -120,16 +120,39 @@
 //     return Exist;
 // }
 
-// int[] mass = new int[8];
-// Fill(mass);
-// Print(mass);
-// Console.WriteLine("Please, enter integer:");
-// int num = int.Parse(Console.ReadLine());
-// bool result = IndexOf(mass, num);
+// альтернативная функция (вместо bool Exist):
 
-// if (result == false) Console.WriteLine("no");
-// else Console.WriteLine("yes");
+// void Scan(int[] givArr, int find)
+// {
+//     for (int i = 0; i < givArr.Length; i++)
+//     {
+//         if (givArr[i] == find)
+//         {
+//             Console.WriteLine("yes");
+//             break;
+//         }
+//         else if (i == givArr.Length - 1)
+//         {
+//             Console.WriteLine("no");
+//         }
+//     }
+// }
 
+int[] mass = new int[8];
+Fill(mass);
+Print(mass);
+Console.WriteLine("Please, enter integer:");
+int num = int.Parse(Console.ReadLine());
+
+bool result = IndexOf(mass, num);
+if (result) Console.WriteLine("yes");
+else Console.WriteLine("no");
+
+// альтенативный способ (с помощью функции Scan):
+
+// Scan(mass, num);
+
+*/
 
 // Задача 35: Задайте одномерный массив 
 // из 123 случайных чисел.
@@ -197,7 +220,6 @@ void Fill(int[] arr)
 
 void Print(int[] array)
 {
-    Console.WriteLine("Given array:");
     for (int i = 0; i < array.Length; i++)
     {
         Console.Write(array[i] + " ");
@@ -205,25 +227,20 @@ void Print(int[] array)
     Console.WriteLine();
 }
 
-void PrintProd(int[] collection)
+void Product(int[] col, int[] newCol)
 {
-    int num = collection.Length;
-    int firstPos = 0;
-    int lastPos = num - 1;
-    Console.WriteLine("Resulting array:");
-    for (int i = 0; i < num / 2; i++)
+    for (int i = 0; i < (1 + col.Length) / 2; i++)
     {
-        int product = collection[firstPos] * collection[lastPos];
-        Console.Write(product + " ");
-        firstPos ++;
-        lastPos --;
+        newCol[i] = col[i] * col[col.Length - i - 1];
     }
-    if (num % 2 == 1) Console.Write (collection[num / 2] + " ");
+    if (newCol.Length % 2 == 0) newCol[newCol.Length - 1] = col[col.Length / 2];
 }
 
 int[] mass = new int[11];
 Fill(mass);
 Print(mass);
-PrintProd(mass);
+int[] resultMass = new int[(1 + mass.Length) / 2];
+Product(mass, resultMass);
+Print(resultMass);
 
 
