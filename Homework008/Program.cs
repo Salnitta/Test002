@@ -12,14 +12,14 @@
 //     }
 // }
 
-void Print(int[] arr)
-{
-    for (int i = 0; i < arr.Length; i++)
-    {
-        Console.Write(arr[i] + " ");
-    } 
-    Console.WriteLine();
-}
+// void Print(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         Console.Write(arr[i] + " ");
+//     } 
+//     Console.WriteLine();
+// }
 
 // int SearchEvenNumbers(int[] arr)
 // {
@@ -52,12 +52,21 @@ void Print(int[] arr)
 //     }
 // }
 
+// void Print(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         Console.Write(arr[i] + " ");
+//     } 
+//     Console.WriteLine();
+// }
+
 // int SumOddIndex(int[] arr)
 // {
 //     int sum = 0;
-//     for (int i = 0; i < arr.Length; i++)
+//     for (int i = 1; i < arr.Length; i += 2)
 //     {
-//         if (i % 2 == 1) sum += arr[i];
+//         sum += arr[i];
 //     }
 //     return sum;
 // }
@@ -75,15 +84,26 @@ void Print(int[] arr)
 // элементов массива.
 // [3 7 22 2 78] -> 76
 
-void Fill(int[] arr)
+void Fill(double[] arr)
 {
     for (int i = 0; i < arr.Length; i++)
     {
-        arr[i] = new Random().Next(0, 100);
+        arr[i] = Math.Round(new Random().NextDouble(), 2) + new Random().Next(0, 100);
+        // альтернативный способ:
+        // arr[i] = Convert.ToDouble(new Random().Next(100)/10.0);
     }
 }
 
-int SearchMax(int[] arr)
+void Print(double[] arr)
+{
+    for (int i = 0; i < arr.Length; i++)
+    {
+        Console.Write(arr[i] + " ");
+    } 
+    Console.WriteLine();
+}
+
+double SearchMax(double[] arr)
 {
     int maxPos = 0;
     for (int i = 0; i < arr.Length; i++)
@@ -93,7 +113,7 @@ int SearchMax(int[] arr)
     return arr[maxPos];
 }
 
-int SearchMin(int[] arr)
+double SearchMin(double[] arr)
 {
     int minPos = 0;
     for (int i = 0; i < arr.Length; i++)
@@ -103,12 +123,13 @@ int SearchMin(int[] arr)
     return arr[minPos];
 }
 
-int[] array = new int[10];
+double[] array = new double[10];
 Fill(array);
 Print(array);
-int max = SearchMax(array);
-int min = SearchMin(array);
-int diff = max - min;
-Console.WriteLine($"Разница между max и min = {diff}");
+double max = SearchMax(array);
+double min = SearchMin(array);
+double diff = max - min;
+Console.WriteLine($"Разница между max и min = {Math.Round(diff, 2)}");
+
 
 
