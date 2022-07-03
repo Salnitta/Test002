@@ -2,18 +2,18 @@
 // Напишите программу, которая упорядочит 
 // по убыванию элементы каждой строки двумерного массива.
 
-void PrintArray (int[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            // Console.Write(i + " " + j + ", ");
-            Console.Write(array[i, j] + " ");
-        }
-        Console.WriteLine();
-    }
-}
+// void PrintArray (int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             // Console.Write(i + " " + j + ", ");
+//             Console.Write(array[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
 
 void FillArray (int[,] array)
 {
@@ -172,25 +172,128 @@ void SortArrayString (int[,] array)
 // которая будет построчно выводить массив, добавляя 
 // индексы каждого элемента.
 
-int a = 4, b = 2, c = 3;
-int[,,] mass = new int[a,b,c];
-int value = 10;
-for (int i = 0; i < mass.GetLength(0); i++)
-    {
-        for (int j = 0; j < mass.GetLength(1); j++)
-        {
-            for (int k = 0; k < mass.GetLength(2); k++)
-            {
-                mass[i,j,k] = value;
-                Console.Write($"{mass[i,j,k]} ({i},{j},{k}) ");
-                value++;
-            }
-        }
-        Console.WriteLine();
-    }
+// int a = 4, b = 2, c = 3;
+// int[,,] mass = new int[a,b,c];
+// for (int i = 0; i < mass.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < mass.GetLength(1); j++)
+//         {
+//             for (int k = 0; k < mass.GetLength(2); k++)
+//             {
+//                 mass[i,j,k] = new Random().Next(10, 100);
+//                 Console.Write($"{mass[i,j,k]} ({i},{j},{k}) ");
+//             }
+//         }
+//         Console.WriteLine();
+//     }
+
+
+// bool Contains(int[,,] array, int find)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             for (int k = 0; k < array.GetLength(2); k++)
+//             {
+//                 if (array[i,j,k] == find) return true;
+//             }
+//         }
+//     }
+//     return false;
+// }
+
+// int a = 3, b = 2, c = 2;
+// int[,,] mass = new int[a,b,c];
+// int rnd = 0;
+// for (int i = 0; i < mass.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < mass.GetLength(1); j++)
+//         {
+//             for (int k = 0; k < mass.GetLength(2); k++)
+//             {
+//                 rnd = new Random().Next(10, 22);
+//                 if (!Contains(mass, rnd))
+//                 {
+//                     mass[i,j,k] = rnd;
+//                     Console.Write($"{mass[i,j,k]} ({i},{j},{k}) ");
+//                 }
+//                 else k--;
+//             }
+//         }
+//         Console.WriteLine();
+//     }
 
 // * Задача 62: Заполните спирально массив 4 на 4.
 
+void PrintArray (int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i,j] < 10) Console.Write($"0{array[i,j]} ");
+            else Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+int n = 4;
+int m = 4;
+        
+int str = n - 1;
+int col = m - 1;
+int help = 0;
+        
+int i = 0;
+int j = 0;
+
+int num = 1;
+
+int [,] mass = new int [n,m];
+                
+while (num < n * m) // узкое место - не получается в цикле поставить <=, т.к. при нечетных m и n возникает ошибка переполнения
+{ 
+    for (; j < col; j++) 
+    {
+        mass[i,j] = num;
+        num++;            
+    }
+        
+    for (; i < str; i++)
+    {
+        mass[i,j] = num;
+        num++;
+    }
+            
+    for (; j > help; j--) 
+    {
+        mass[i,j] = num;
+        num++;      
+    }
+
+    for (; i > help; i--) 
+    {
+        mass[i,j] = num;
+        num++;              
+    }   
+
+    str --;
+    col --;
+    help ++; 
+    j ++;
+    i ++;    
+}
+
+if (n * m % 2 == 1 && num == n * m) // условие, позволяющее обойти узкое место, указанное выше
+    {
+        mass[i,j] = num;
+        num++; 
+    }
+
+Console.WriteLine();
+PrintArray(mass);
 
 // * Задача 61: Вывести первые N строк треугольника Паскаля. 
 // Сделать вывод в виде равнобедренного треугольника
