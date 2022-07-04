@@ -27,7 +27,7 @@ for (i = 0; i < n; i++)
     {
         Console.Write(" "); // создаём пробелы между элементами треугольника
         result = Factorial(i) / (Factorial(c) * Factorial(i - c)); //формула вычисления элементов треугольника
-        if (result < 10) Console.Write("0" + result);
+        if (result < 10) Console.Write(result + " ");
         else Console.Write(result); 
     }
     Console.WriteLine();
