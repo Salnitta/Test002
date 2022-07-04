@@ -32,7 +32,7 @@ void Print (int[,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            if (array[i,j] < 10) Console.Write($"0{array[i,j]} ");
+            if (array[i,j] < 10) Console.Write(array[i,j] + "  ");
             else Console.Write(array[i, j] + " ");
         }
         Console.WriteLine();
@@ -305,7 +305,7 @@ PrintArray(mass);
 //     {
 //         if (i == 0 || j == 0) mass[i,j] = 1;
 //         else mass[i,j] = mass[i - 1, j] + mass[i, j-1];
-//         if (mass[i,j] < 10) Console.Write($"0{mass[i,j]} ");
+//         if (mass[i,j] < 10) Console.Write(mass[i,j] + "  ");
 //         else Console.Write(mass[i,j] + " ");
 //     }
 //     Console.WriteLine();
