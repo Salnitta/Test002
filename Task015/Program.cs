@@ -94,65 +94,65 @@ void Print (int[,] array)
 // двумерного массива. Частотный словарь содержит информацию 
 // о том, сколько раз встречается элемент входных данных.
 
-int m = 4, n = 4;
-int[,] mass = new int[m,n];
+// int m = 4, n = 4;
+// int[,] mass = new int[m,n];
 
-for (int i = 0; i < mass.GetLength(0); i++)
-{
-    for (int j = 0; j < mass.GetLength(1); j++)
-    {
-        mass[i,j] = new Random().Next(0, 3);
-    }
-}
+// for (int i = 0; i < mass.GetLength(0); i++)
+// {
+//     for (int j = 0; j < mass.GetLength(1); j++)
+//     {
+//         mass[i,j] = new Random().Next(0, 3);
+//     }
+// }
 
-Print(mass);
-Console.WriteLine();
+// Print(mass);
+// Console.WriteLine();
 
-int[] array = new int[mass.Length];
-int k = 0;
-bool finded = false;
-for (int i = 0; i < mass.GetLength(0); i++)
-{
-    for (int j = 0; j < mass.GetLength(1); j++)
-    {
-        finded = false;
-        for (int l = 0; l < k; l++)
-        {
-        if (array[l] == mass[i,j]) 
-        {
-            finded = true;
-            break;
-        }
-        }
-       if (!finded)
-       {
-        array[k] = mass[i,j];
-        k++;
-       }
-    }
-}
+// int[] array = new int[mass.Length];
+// int k = 0;
+// bool finded = false;
+// for (int i = 0; i < mass.GetLength(0); i++)
+// {
+//     for (int j = 0; j < mass.GetLength(1); j++)
+//     {
+//         finded = false;
+//         for (int l = 0; l < k; l++)
+//         {
+//         if (array[l] == mass[i,j]) 
+//         {
+//             finded = true;
+//             break;
+//         }
+//         }
+//        if (!finded)
+//        {
+//         array[k] = mass[i,j];
+//         k++;
+//        }
+//     }
+// }
 
-for (int i = 0; i < k; i++)
-{
-    Console.Write(array[i] + " ");
-}
-Console.WriteLine();
+// for (int i = 0; i < k; i++)
+// {
+//     Console.Write(array[i] + " ");
+// }
+// Console.WriteLine();
 
-int count = 0;
-int num = 0;
-for (int t = 0; t < k; t++)
-{
-    num = array[t];
-    for (int i = 0; i < mass.GetLength(0); i++)
-    {
-        for (int j = 0; j < mass.GetLength(1); j++)
-        {
-        if (mass[i,j] == num) count ++;
-        }
-    }
+// int count = 0;
+// int num = 0;
+// for (int t = 0; t < k; t++)
+// {
+//     num = array[t];
+//     for (int i = 0; i < mass.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < mass.GetLength(1); j++)
+//         {
+//         if (mass[i,j] == num) count ++;
+//         }
+//     }
 
-    Console.WriteLine($"{num} встречается {count} раз");
-}
+//     Console.WriteLine($"{num} встречается {count} раз");
+// }
 
 // Задача 59: Задайте двумерный массив из целых чисел. 
 // Напишите программу, которая удалит строку и столбец, 
@@ -346,70 +346,70 @@ for (int i = 0; i < mass.GetLength(0); i++)
 int count = 0; */
 
 
-// void FillArray(int[,] array)
-// {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//             array[i, j] = new Random().Next(1, 10);
-//         }
-//     }
-// }
-// void PrintArray(int[,] array)
-// {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//             Console.Write($"{array[i, j]} ");
-//         }
-//         Console.WriteLine();
-//     }
-// }
-// int m = 6;
-// int n = 6;
-// int[,] array = new int[m, n];
+void FillArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = new Random().Next(1, 10);
+        }
+    }
+}
+void PrintArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+int m = 6;
+int n = 6;
+int[,] array = new int[m, n];
 
-// FillArray(array);
-// PrintArray(array);
-// Console.WriteLine();
+FillArray(array);
+PrintArray(array);
+Console.WriteLine();
 
-// int count = 0;
-// int[,] dict = new int[m * n, 2];
-// int k = 0;
+int count = 0;
+int[,] dict = new int[m * n, 2];
+int k = 0;
 
-// bool exist = false;
+bool exist = false;
 
-// for (int i = 0; i < array.GetLength(0); i++)
-// {
-//     for (int j = 0; j < array.GetLength(1); j++)
-//     {
-//         exist = false;
-//         for (int r = 0; r < k; r++)
-//         {
-//             if (dict[r, 0] == array[i, j])
-//             {
-//                 dict[r, 1]++;
-//                 exist = true;
-//                 break;
-//             }
-//         }
-//         if (!exist)
-//         {
-//             dict[k, 0] = array[i, j];
-//             dict[k, 1]++;
-//             k++;
-//         }
-//     }
-// }
-// Console.WriteLine("Число | Раз  |");
-// for (int i = 0; i < k; i++)
-// {
-//     for (int j = 0; j < dict.GetLength(1); j++)
-//     {
+for (int i = 0; i < array.GetLength(0); i++)
+{
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+        exist = false;
+        for (int r = 0; r < k; r++)
+        {
+            if (dict[r, 0] == array[i, j])
+            {
+                dict[r, 1]++;
+                exist = true;
+                break;
+            }
+        }
+        if (!exist)
+        {
+            dict[k, 0] = array[i, j];
+            dict[k, 1]++;
+            k++;
+        }
+    }
+}
+Console.WriteLine("Число | Раз  |");
+for (int i = 0; i < k; i++)
+{
+    for (int j = 0; j < dict.GetLength(1); j++)
+    {
 
-//         Console.Write($" {dict[i, j]}    |");
-//     }
-//     Console.WriteLine();
-// }
+        Console.Write($" {dict[i, j]}    |");
+    }
+    Console.WriteLine();
+}
