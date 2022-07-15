@@ -11,44 +11,43 @@
 // Группа 5: 7 16 24 36 40
 // Группа 6: 5 32 48
 
+
+// Решение через двумерный массив
+
 int n = 50;
-int[,] b = new int [n, n];
-b[0, 0] = 1;
-b[1, 0] = 2;
+int[,] result = new int [n, n];
+result[0, 0] = 1;
+result[1, 0] = 2;
 
 int count = 2;
 int m = 0;
-bool exist = false;
+bool primeNum = false;
 
 for (int i = 2; i < n; i++)
 {
-    exist = false;
+    primeNum = false;
     for (int k = 1; k < count; k++)
     {
         for (int j = 0; j < i - 1; j++)
         {
-            if (b[k, j] == 0)
+            if (result[k, j] == 0)
             {
                 j--;
                 break;
             }
-            else if ((i + 1) % b[k, j] != 0) exist = true;
-            else 
-            {
-                exist = false;
-                break;
-            }
+            else if ((i + 1) % result[k, j] != 0) primeNum = true;
+            else break;
             m = j + 1;
         }
-        if(exist)
+        if(primeNum)
             {
-                b[k, m] = i + 1;
+                result[k, m] = i + 1;
                 break;
             }  
     }   
-    if (!exist)
+    if (!primeNum)
     {
-        b[count, 0] = i + 1;
+        result[count, 0] = i + 1;
         count++;
     }
 }
@@ -56,13 +55,89 @@ for (int i = 2; i < n; i++)
 for (int i = 0; i < count; i++)
 {
     Console.Write($"Группа {i + 1}: ");
-    for (int j = 0; j < b.GetLength(1); j++)
+    for (int j = 0; j < result.GetLength(1); j++)
     {
-        if (b[i, j] != 0) Console.Write(b[i, j] + " ");
+        if (result[i, j] != 0) Console.Write(result[i, j] + " ");
     }
     Console.WriteLine();
 }
 
+
+
+
+
+// Решение через одномерные массивы
+
+// void Fill (int[] array)
+// {
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         array[i] = i + 1;
+//     }
+// }
+
+// void PrintExceptNull (int[] array)
+// {
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         if (array[i] != 0) Console.Write(array[i] + " ");
+//     }
+// }
+
+// void CopyArray (int[] arrayFirst, int[] arraySecond)
+// {
+//     for (int i = 0; i < arrayFirst.Length; i++)
+//     {
+//         arrayFirst[i] = arraySecond[i];
+//     }
+// }
+
+
+
+// int n = 50;
+// int[] collection = new int[n];
+// int[] result = new int[n];
+// int[] newCollection = new int[n];
+// int count = 1;
+// int k = 0;
+// int group = 1;
+// bool primeNum = false;
+
+// Fill(collection);
+
+// for (int l = 0; l < group; l++)
+// {
+//     result[0] = collection[0];
+//     for (int i = 1; i < collection.Length; i++)
+//     {
+//         primeNum = false;
+//         for (int j = 0; j < count; j++)
+//         {
+//             if (result[j] == 0 || collection[i] % result[j] == 0) break;
+//             else primeNum = true;
+//         }
+//         if(primeNum) 
+//         {
+//             result[count] = collection[i];
+//             count++;
+//         }
+//         else
+//         {
+//             newCollection[k] = collection[i];
+//             k++;
+//         }
+//     }
+
+//     Console.Write($"Группа {group++}: ");
+//     PrintExceptNull(result);
+//     if (newCollection[0] == 0) break;
+//     Console.WriteLine();
+//     CopyArray(collection, newCollection);
+//     Array.Clear(newCollection);
+//     Array.Clear(result);
+//     k = 0;
+//     count = 1;
+// }
 
 
 
