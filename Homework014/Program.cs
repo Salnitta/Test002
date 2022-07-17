@@ -12,62 +12,9 @@
 // Группа 6: 5 32 48
 
 
-// Решение через двумерный массив
+// Простое решение через степени двойки (до которого додумалась не сразу):
 
-int n = 50;
-int[,] result = new int [n, n];
-result[0, 0] = 1;
-result[1, 0] = 2;
-
-int count = 2;
-int m = 0;
-bool primeNum = false;
-
-for (int i = 2; i < n; i++)
-{
-    primeNum = false;
-    for (int k = 1; k < count; k++)
-    {
-        for (int j = 0; j < i - 1; j++)
-        {
-            if (result[k, j] == 0) break;
-            else if ((i + 1) % result[k, j] != 0) 
-            {
-                primeNum = true;
-                m = j + 1;
-            }
-            else break;
-        }
-        if(primeNum)
-            {
-                result[k, m] = i + 1;
-                break;
-            }  
-    }   
-    if (!primeNum)
-    {
-        result[count, 0] = i + 1;
-        count++;
-    }
-}
-
-for (int i = 0; i < count; i++)
-{
-    Console.Write($"Группа {i + 1}: ");
-    for (int j = 0; j < result.GetLength(1); j++)
-    {
-        if (result[i, j] != 0) Console.Write(result[i, j] + " ");
-    }
-    Console.WriteLine();
-}
-
-
-
-
-
-// Решение через одномерные массивы
-
-void Fill (int[] array)
+void Fill(int[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -75,23 +22,105 @@ void Fill (int[] array)
     }
 }
 
-void PrintExceptNull (int[] array)
+int n = 50;
+int group = 1;
+int[] collection = new int[n];
+Fill(collection);
+
+Console.WriteLine($"Группа {group++}: {collection[0]} ");
+for (int k = collection[1]; k < n; k *= 2)
 {
-    for (int i = 0; i < array.Length; i++)
+    Console.Write($"Группа {group++}: {k} ");
+    for (int i = k; i < collection.Length; i++)
     {
-        if (array[i] != 0) Console.Write(array[i] + " ");
+        if (collection[i] > k && collection[i] % k != 0)
+        {
+            Console.Write(collection[i] + " ");
+            collection[i] = 0;
+        }
     }
+    Console.WriteLine();
 }
 
-void CopyArray (int[] arrayFirst, int[] arraySecond)
-{
-    for (int i = 0; i < arrayFirst.Length; i++)
-    {
-        arrayFirst[i] = arraySecond[i];
-    }
-}
 
 
+// Множество других решений, которые были найдены, пока не осенило, что группы начинаются каждый раз со степеней двоек:
+// Решение через двумерный массив
+
+// int n = 50;
+// int[,] result = new int [n, n];
+// result[0, 0] = 1;
+// result[1, 0] = 2;
+
+// int count = 2;
+// int m = 0;
+// bool primeNum = false;
+
+// for (int i = 2; i < n; i++)
+// {
+//     primeNum = false;
+//     for (int k = 1; k < count; k++)
+//     {
+//         for (int j = 0; j < i - 1; j++)
+//         {
+//             if (result[k, j] == 0) break;
+//             else if ((i + 1) % result[k, j] != 0) 
+//             {
+//                 primeNum = true;
+//                 m = j + 1;
+//             }
+//             else break;
+//         }
+//         if(primeNum)
+//             {
+//                 result[k, m] = i + 1;
+//                 break;
+//             }  
+//     }   
+//     if (!primeNum)
+//     {
+//         result[count, 0] = i + 1;
+//         count++;
+//     }
+// }
+
+// for (int i = 0; i < count; i++)
+// {
+//     Console.Write($"Группа {i + 1}: ");
+//     for (int j = 0; j < result.GetLength(1); j++)
+//     {
+//         if (result[i, j] != 0) Console.Write(result[i, j] + " ");
+//     }
+//     Console.WriteLine();
+// }
+
+
+
+// Решение через одномерные массивы
+
+// void Fill (int[] array)
+// {
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         array[i] = i + 1;
+//     }
+// }
+
+// void PrintExceptNull (int[] array)
+// {
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         if (array[i] != 0) Console.Write(array[i] + " ");
+//     }
+// }
+
+// void CopyArray (int[] arrayFirst, int[] arraySecond)
+// {
+//     for (int i = 0; i < arrayFirst.Length; i++)
+//     {
+//         arrayFirst[i] = arraySecond[i];
+//     }
+// }
 
 // int n = 50;
 // int[] collection = new int[n];
@@ -137,6 +166,7 @@ void CopyArray (int[] arrayFirst, int[] arraySecond)
 //     k = 0;
 //     count = 1;
 // }
+
 
 
 // Альтернативное решение через одномерные массивы:
