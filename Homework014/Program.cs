@@ -67,29 +67,29 @@ for (int i = 0; i < count; i++)
 
 // Решение через одномерные массивы
 
-// void Fill (int[] array)
-// {
-//     for (int i = 0; i < array.Length; i++)
-//     {
-//         array[i] = i + 1;
-//     }
-// }
+void Fill (int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = i + 1;
+    }
+}
 
-// void PrintExceptNull (int[] array)
-// {
-//     for (int i = 0; i < array.Length; i++)
-//     {
-//         if (array[i] != 0) Console.Write(array[i] + " ");
-//     }
-// }
+void PrintExceptNull (int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] != 0) Console.Write(array[i] + " ");
+    }
+}
 
-// void CopyArray (int[] arrayFirst, int[] arraySecond)
-// {
-//     for (int i = 0; i < arrayFirst.Length; i++)
-//     {
-//         arrayFirst[i] = arraySecond[i];
-//     }
-// }
+void CopyArray (int[] arrayFirst, int[] arraySecond)
+{
+    for (int i = 0; i < arrayFirst.Length; i++)
+    {
+        arrayFirst[i] = arraySecond[i];
+    }
+}
 
 
 
@@ -139,6 +139,51 @@ for (int i = 0; i < count; i++)
 // }
 
 
+// Альтернативное решение через одномерные массивы:
+
+// int n = 50;
+// int[] collection = new int[n];
+// int[] result = new int[n];
+// int count = 1;
+// int group = 1;
+// bool primeNum = true;
+
+// Fill(collection);
+
+// for (int i = 0; i < collection.Length; i++)
+// {
+//     if (collection[i] != 0)
+//     {
+//         Array.Clear(result);
+//         result[0] = collection[i];
+//         collection[i] = 0;
+//         count = 1; 
+//         for (int j = i + 1; j < collection.Length; j++)
+//         {
+//             if (collection[j] != 0)
+//             {
+//                 primeNum = true;
+//                 for (int k = 0; k < count; k++)
+//                 {
+//                     if (collection[j] % result[k] == 0) 
+//                     {
+//                         primeNum = false;
+//                         break;
+//                     }
+//                 }
+//                 if(primeNum) 
+//                 {
+//                     result[count] = collection[j];
+//                     count++;
+//                     collection[j] = 0;
+//                 }
+//             }
+//         }
+//     Console.Write($"Группа {group++}: ");
+//     PrintExceptNull(result);
+//     Console.WriteLine();
+//     }
+// }
 
 
 
