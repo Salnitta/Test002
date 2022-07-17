@@ -30,14 +30,13 @@ for (int i = 2; i < n; i++)
     {
         for (int j = 0; j < i - 1; j++)
         {
-            if (result[k, j] == 0)
+            if (result[k, j] == 0) break;
+            else if ((i + 1) % result[k, j] != 0) 
             {
-                j--;
-                break;
+                primeNum = true;
+                m = j + 1;
             }
-            else if ((i + 1) % result[k, j] != 0) primeNum = true;
             else break;
-            m = j + 1;
         }
         if(primeNum)
             {
