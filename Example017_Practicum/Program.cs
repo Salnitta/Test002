@@ -92,9 +92,8 @@ int ElementsCounter(string[] array, int length)
     return count;
 }
 
-string[] MainTask(string[] array, int length, int size) 
+string[] MainTask(string[] array, string[] result, int length) 
 {
-    string[] result = new string[size];
     int count = 0;
     for (int i = 0; i < array.Length; i++)
     {
@@ -128,7 +127,8 @@ Console.WriteLine("Input array:");
 Console.WriteLine(input);
 
 int count = ElementsCounter(inputArray, length);
-string[] outputArray = MainTask(inputArray, length, count);
+string[] outputArray = CreateArray(count);
+outputArray = MainTask(inputArray, outputArray, length);
 string output = PrintArray(outputArray);
 Console.WriteLine("Output array:");
 Console.WriteLine(output);
