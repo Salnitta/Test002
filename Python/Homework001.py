@@ -5,7 +5,7 @@
 # - 1 -> нет
 
 # day = int(input('Введите номер дня недели: '))
-# if day > 7 or day < 1:
+# if day > 7 or day < 1:                    # 0 < day < 8
 #     print('Введенное число не соответствует ни одному дню недели')
 # elif day == 6 or day ==7:
 #     print('Да, выходной')
@@ -92,7 +92,5 @@ for i in range(2):
         Y = j
         for k in range(2):
             Z = k
-            bool1 = not (X or Y or Z)
-            bool2 = (not X) and (not Y) and (not Z)
-            result = bool1 == bool2
-            print(f'{X, Y, Z} - {result}')
+            bool = not (X or Y or Z) == (not X and not Y and not Z)
+            print(f'{X, Y, Z} - {bool}')
