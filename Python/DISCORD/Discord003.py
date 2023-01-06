@@ -15,12 +15,12 @@ def decode(equation: dict) -> str:
         if value != 0:
             new_equation.append(f'{value}*x**{key}')
     new_equation = ' + '.join(new_equation) + ' = 0'
-    new_equation = new_equation.replace('+ -', '- ')\
-            .replace('*x**0', '').replace(' 1*x', ' x').replace('x**1', 'x')
+    new_equation = new_equation.replace('+ -', '- ').replace('*x**0', '')\
+        .replace(' 1*x', ' x').replace('x**1', 'x').replace('-1*', '-')
     if new_equation.startswith('1*x'):
         return new_equation[2:]
-    elif new_equation.startswith('-1x'):
-        return new_equation.replace('-1*x', '-x')
+    # elif new_equation.startswith('-1x'):
+    #     return new_equation.replace('-1*x', '-x')
     else:
         return new_equation
 
