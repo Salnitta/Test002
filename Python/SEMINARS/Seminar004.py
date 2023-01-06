@@ -30,7 +30,7 @@
 # my_dict['32'] = 'value' # если такой ключ уже есть, значение перезаписывается
 # my_dict[3] = my_dict.get(3) + 1 # увеличили значение на 1
 
-# Задача
+# Задача - посчитать количество разных цифр в строке
 
 # my_dict = {}
 
@@ -39,39 +39,81 @@
 #     my_dict[dig] = my_dict.get(dig, 0) + 1
 # print(my_dict)
 
-# Задача 2
+# Задача 2: Задано квадратное уравнение типа 'A*x**2 + B*x + C = 0', нужно написать алгоритм, 
+# который получит коэффиценты из уравнения, и посчитать X
 
-#'A*x**2 + B*x + C = 0'
+# Решение в группе (вычислить дискриминант не успели):
 
-# '32*x**2 + 4*x + 6 = 0'
-# my_string = 'A*x**2 + B*x + C = 0'
-# def conv(my_string):
-#     new_string = my_string.split('x')
-#     print(new_string)
-#     new_string2 = []
-#     for i in range(len(new_string)):
-#         new_string2.append(new_string[i].replace('**2', '').replace('*', '').replace('+', '').replace('=', '').replace('0', '').replace(' ', ''))
-#     return new_string2
+# def conv(my_str):
+#     new_str = my_str.split('x')
+#     print(new_str)
+#     new_str2 = []
+#     for i in range(len(new_str)):
+#         new_str2.append(new_str[i].replace('**2', '').replace('*', '')\
+#             .replace(' ', '').replace('+', '').replace('=', '').replace('0', ''))
+#     return new_str2
 
-
-# string_a = '-3*x**2 + 78*x -9=0'
-# str_res = conv(string_a)
+# stringa = '32*x**2 + 4*x - 6 = 0'
+# str_new = conv(stringa)
 # for i in range(3):
-#     str_res[i] = int(str_res[i])
-# print(str_res)
-# x = (-str_res[i])
+#     str_new[i] = int(str_new[i])
+# print(str_new)
 
-equation = '-3*x**2 + 78*x -9=0'
+# Решение преподавателя:
 
-def create_koef(equation: str) -> tuple:
-    new_coef = []
-    nq = equation.replace(' ', '').replace('=0', '').\
-        replace('+', ' ').replace('-', ' -').split()
-    for item in nq:
-        new_coef.append(int(item.split('*x')[0]))
-    return new_coef
+# import math
 
-    
+# equation = '6 *x**2  + 4*x -3 = 0'
+
+# def create_koef(equation: str) -> tuple:
+#     new_coef = []
+#     nq = equation.replace(' ', '').replace('=0', '').\
+#         replace('+', ' ').replace('-', ' -').split()
+#     # print(nq)
+#     for item in nq:
+#         if item.startswith('x'):
+#             new_coef.append(1)
+#         elif item.startswith('-x'):
+#             new_coef.append(-1)
+#         else:
+#             new_coef.append(int(item.split('*x')[0]))
+#     return new_coef
+
+# def solution(koef: list):
+#     a, b, c = koef
+#     disc = b**2 - 4*a*c
+#     if disc > 0:
+#         x1 = (-b + math.sqrt(disc))/(2*a)
+#         x2 = (-b - math.sqrt(disc))/(2*a)
+#         return 2, round(x1, 2), round(x2, 2)  # всегда возвращаем кортеж из 3х элементов
+#     elif disc == 0:                           # 1ый элемент означает сколько корней
+#         x = -b//(2*a)
+#         return 1, round(x, 2), None           # всегда возвращаем кортеж из 3х элементов
+#     else:                                     # 1ый элемент означает сколько корней
+#         return 0, None, None                  # всегда возвращаем кортеж из 3х элементов
+#                                               # 1ый элемент означает сколько корней
+# print(solution(create_koef(equation)))        # нужна еще проверка деления на 0
 
 
+# Домашнее задание
 
+import random
+
+k = int(input('Введите максимальную степень: '))
+equation = {}
+for i in range(k, -1, -1):
+    equation[i] = random.randint(0, 100)
+
+print(equation)
+
+eq_str = ''
+for k, v in equation.items():
+    if k == 1:
+        eq_str += f'{v}*x + '
+    elif k == 0:
+        eq_str += f'{v} + '
+    else:
+        eq_str += f'{v}*x**{k} + '
+eq_str = eq_str[:-3]
+
+print(eq_str)
