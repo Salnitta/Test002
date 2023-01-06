@@ -25,7 +25,7 @@ def format_polynom(polynom_str: str):
     polynom_str = polynom_str.replace('+ -', '- ')
     return polynom_str
 
-def reformat_polynom(polynom_str: str) -> str:
+def reformat_polynom(polynom_str: str):
     polynom_str = polynom_str.replace('- ', '+ -').replace('-x', '-1*x')\
         .replace(' x', ' 1*x').replace('*x ', '*x**1 ')
     if polynom_str[0] == 'x':
@@ -63,33 +63,27 @@ def recreate_polynom(given_dict: dict) -> str:
     return polynom_str
 
 k = int(input('Введите натуральную степень k: '))
-polynom_a = create_polynom(k)
-polynom_A = format_polynom(polynom_a)
+polynom_A = format_polynom(create_polynom(k))
 with open('file_A.txt', 'w') as data:
     data.write(polynom_A)
 print(f'Первое уравнение:\n{polynom_A}')
 
 l = int(input('Введите натуральную степень l: '))
-polynom_b = create_polynom(l)
-polynom_B = format_polynom(polynom_b)
+polynom_B = format_polynom(create_polynom(l))
 with open('file_B.txt', 'w') as data:
     data.write(polynom_B)
 print(f'Второе уравнение:\n{polynom_B}')
 
 with open('file_A.txt', 'r') as data:
     polynom_file_A = data.read()
-polynom_file_a = reformat_polynom(polynom_file_A)
-coef_A = create_coef_dict(polynom_file_a)
+coef_A = create_coef_dict(reformat_polynom(polynom_file_A))
 
 with open('file_B.txt', 'r') as data:
     polynom_file_B = data.read()
-polynom_file_b = reformat_polynom(polynom_file_B)
-coef_B = create_coef_dict(polynom_file_b)
-
+coef_B = create_coef_dict(reformat_polynom(polynom_file_B))
 
 final_coef = dictionaries_sum(coef_A, coef_B)
-polynoms_sum = recreate_polynom(final_coef)
-result_polynom = format_polynom(polynoms_sum)
+result_polynom = format_polynom(recreate_polynom(final_coef))
 with open('file_result.txt', 'w') as data:
     data.write(result_polynom)
 print(f'Сумма уравнений:\n{result_polynom}')
