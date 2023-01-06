@@ -17,13 +17,13 @@ def create_polynom(coef: int) -> str:
             polynom_str += str(f' + {r}*x**{i}')
     return polynom_str
 
-def format_polynom(unform_polynom: str) -> str:
-    unform_polynom = unform_polynom + ' = 0'
-    unform_polynom = unform_polynom.replace('x**1 ', 'x ').replace('*x**0', '')\
+def format_polynom(polynom_str: str):
+    polynom_str = polynom_str + ' = 0'
+    polynom_str = polynom_str.replace('x**1 ', 'x ').replace('*x**0', '')\
         .replace(' 1*x', ' x').replace(' -1*x', ' -x')
-    unform_polynom = unform_polynom[3:]
-    form_polynom = unform_polynom.replace('+ -', '- ')
-    return form_polynom
+    polynom_str = polynom_str[3:]
+    polynom_str = polynom_str.replace('+ -', '- ')
+    return polynom_str
 
 def reformat_polynom(polynom_str: str) -> str:
     polynom_str = polynom_str.replace('- ', '+ -').replace('-x', '-1*x')\
@@ -67,14 +67,14 @@ polynom_a = create_polynom(k)
 polynom_A = format_polynom(polynom_a)
 with open('file_A.txt', 'w') as data:
     data.write(polynom_A)
-print(f'Первый многочлен:\n{polynom_A}')
+print(f'Первое уравнение:\n{polynom_A}')
 
 l = int(input('Введите натуральную степень l: '))
 polynom_b = create_polynom(l)
 polynom_B = format_polynom(polynom_b)
 with open('file_B.txt', 'w') as data:
     data.write(polynom_B)
-print(f'Второй многочлен:\n{polynom_B}')
+print(f'Второе уравнение:\n{polynom_B}')
 
 with open('file_A.txt', 'r') as data:
     polynom_file_A = data.read()
@@ -92,5 +92,5 @@ polynoms_sum = recreate_polynom(final_coef)
 result_polynom = format_polynom(polynoms_sum)
 with open('file_result.txt', 'w') as data:
     data.write(result_polynom)
-print(f'Сумма многочленов:\n{result_polynom}')
+print(f'Сумма уравнений:\n{result_polynom}')
 
