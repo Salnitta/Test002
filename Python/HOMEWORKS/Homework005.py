@@ -142,7 +142,7 @@
 
 
 
-# ИГРА ЧЕЛОВЕКА С ИНТЕЛЛЕКТУАЛЬНЫМ БОТОМ
+# ИГРА ЧЕЛОВЕКА С УМНЫМ БОТОМ
 
 # import random
 
@@ -226,7 +226,63 @@
 # 2. Создайте программу для игры в 'Крестики-нолики'
 # НЕОБЯЗАТЕЛЬНО Добавить игру против бота с интеллектом
 
+# ИГРА В 'КРЕСТИКИ - НОЛИКИ'
 
+# number = list(range(1, 10))
+# win_number = [(1, 2, 3), (4, 5, 6), (7, 8, 9), (1, 4, 7), (2, 5, 8), (3, 6, 9), (1, 5, 9), (3, 5, 7)]
+
+# def game_board():
+#     print('-------------')
+#     for i in range(3):
+#         for y in range(3):
+#             print('|', number[y + i * 3], end = ' ')
+#         print(f'|\n-------------')
+
+# def player_turn(player: str):
+#     while True:
+#         try:
+#             turn = int(input(f'Куда поставить {player}: '))
+#             if 0 < turn < 10:
+#                 if str(number[turn - 1]) not in 'XO':
+#                     number[turn - 1] = player
+#                     return number
+#                 else:
+#                     print('Эта клетка уже занята!')
+#             else: 
+#                 print('Введите цифру с игрового поля')
+#         except:
+#             print('Введите цифру с игрового поля')
+
+# def win_check():
+#     for each in win_number:
+#         if number[each[0] - 1] == number[each[1] - 1] == number[each[2] - 1]:
+#             return number[each[1] - 1]
+#     else:
+#         return False
+
+
+# def play():
+#     count = 0
+#     while True:
+#         game_board()
+#         if count % 2 == 0:
+#             player_turn('X')
+#         else:
+#             player_turn('O')
+#         if count > 3:
+#             winner = win_check()
+#             if winner:
+#                 game_board()
+#                 print(f'{winner} победил!')
+#                 break
+#         count += 1
+#         if count == 9:
+#             game_board()
+#             print('Ничья')
+#             break
+    
+
+# play()
 
 
 # 3. Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
@@ -234,13 +290,9 @@
 # aaaaabbbcccc -> 5a3b4c
 # 5a3b4c -> aaaaabbbcccc
 
-path = 'HOMEWORKS/input_data.txt'
-with open (path, 'r') as data:
-    input_data = data.read()
-
-# Решение через строку
-
-def compression(data: str):
+def compression(path_in: str, path_out: str):
+    with open (path_in, 'r') as data:
+        data = data.read()
     result = ''
     count = 1
     for i in range(len(data) - 1):
@@ -249,10 +301,14 @@ def compression(data: str):
         else:
             result += str(count) + data[i]
             count = 1
-    result += str(count) + input_data[len(data) - 1]
+    result += str(count) + data[len(data) - 1]
+    with open (path_out, 'w') as data:
+        data.write(result)
     return result
 
-def expansion(data: str):
+def expansion(path_in: str, path_out: str):
+    with open (path_in, 'r') as data:
+        data = data.read()
     result = ''
     count = ''
     for i in range(len(data)):
@@ -262,27 +318,22 @@ def expansion(data: str):
             count = int(count)
             result += data[i] * count
             count = ''
+    with open (path_out, 'w') as data:
+        data.write(result)
     return result
 
+def main():
+    path_in = 'HOMEWORKS/input_data.txt'
+    path_out = 'HOMEWORKS/output_data.txt'
+    
+    compression_data = compression(path_in, path_out)
+    print(compression_data)
+    
+    expansion_data = expansion(path_out, path_in)
+    print(expansion_data)
 
-output_data = compression(input_data)
-print(output_data)
-print(expansion(output_data))
+main()   
 
-
-# Решение через список
-
-# compression = []
-# count = 1
-# for i in range(len(input_data)-1):
-#     if input_data[i] == input_data[i+1]:
-#         count += 1
-#     else:
-#         compression.append((count, input_data[i]))
-#         count = 1
-# compression.append((count, input_data[len(input_data)-1]))
-
-# print(compression)
 
 
 
