@@ -21,13 +21,21 @@ def main_menu() -> int:
     for i, item in enumerate(commands, 1):
         print(f'\t{i}. {item}')
     print()
-    choice = int(input('Выберите пункт меню: ')) # сюда добавить проверку на дурака
-    print()
-    return choice
+    while True:
+        try:
+            choice = int(input('Выберите пункт меню: ')) 
+            print()
+            return choice
+        except:
+            print()
+            input_error()
+            
+    
 
 def show_contacts(phone_list: list):
     if len(phone_list) < 1:
-        print('Телефонная книга пуста или не открыта')
+        print('ТЕЛЕФОННАЯ КНИГА ПУСТА ИЛИ НЕ ОТКРЫТА')
+        print()
     else:
         for i, contact in enumerate(phone_list, 1):
             print(f'\t{i}. {contact[0]:20} {contact[1]:13} {contact[2]:20}')
@@ -46,16 +54,21 @@ def create_new_contact():
 
 def find_contact():
     find = input('Введите искомый элемент: ')
+    print()
     return find
 
 def select_contact(phone_list: list, command: str):
-    id_contact = int(input(f'Чтобы {command}, введите его номер: '))    # нужна проверка на int и наличие такого номера
-    print()
-    print(f'Вы хотите {command}: {phone_list[id_contact - 1][0]} {phone_list[id_contact - 1][1]} {phone_list[id_contact - 1][2]}')
-    confirm = input(f'Нажмите 1 для подтверждения или Enter для отмены: ')
-    print()
-    if confirm:
-        return int(id_contact)
+    if len(phone_list) < 1:
+        print('ТЕЛЕФОННАЯ КНИГА ПУСТА ИЛИ НЕ ОТКРЫТА')
+        print()
+    else:
+        id_contact = int(input(f'Чтобы {command}, введите его номер: '))    # нужна проверка на int и наличие такого номера
+        print()
+        print(f'Вы хотите {command}: {phone_list[id_contact - 1][0]} {phone_list[id_contact - 1][1]} {phone_list[id_contact - 1][2]}')
+        confirm = input(f'Нажмите 1 для подтверждения или Enter для отмены: ')
+        print()
+        if confirm:
+            return int(id_contact)
     
     
 def change_contact(phone_list: list, id_contact: int):
